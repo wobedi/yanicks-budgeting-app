@@ -35,3 +35,7 @@ The web app should show him his spending by category over time, using data from 
 - Tailwind, latest version
 - DB: SQLite (local only for Version 1, later maybe something like Turso for cloud sync)
 - ORM: Drizzle
+
+### 4. Relevant links
+
+[Wise API Docs](https://docs.wise.com/api-docs/api-reference)
