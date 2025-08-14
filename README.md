@@ -1,38 +1,72 @@
-# sv
+# Personal Budgeting App
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A SvelteKit web app for personal budgeting with Wise bank integration and automatic transaction categorization.
 
-## Creating a project
+## Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Wise API Integration**: Automatically import transactions from your Wise account
+- **AI Categorization**: Uses OpenAI to automatically categorize transactions
+- **Manual Categorization**: Edit categories manually in the UI
+- **Month Filtering**: Filter transactions and spending by calendar month
+- **Spending Analysis**: View spending breakdown by category
+
+## Setup
+
+1. **Install dependencies:**
+
+   ```sh
+   pnpm install
+   ```
+
+2. **Set up environment variables:**
+
+   ```sh
+   cp .env.example .env
+   ```
+
+   Edit `.env` and add your API keys:
+   - `WISE_API_KEY`: Get from [Wise Business Developer Portal](https://wise.com/gb/business/developer/)
+   - `WISE_PROFILE_ID`: Your Wise profile ID
+   - `OPENAI_API_KEY`: Get from [OpenAI Platform](https://platform.openai.com/api-keys)
+
+3. **Set up the database:**
+   ```sh
+   pnpm db:push
+   ```
+
+## Development
+
+Start the development server:
 
 ```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+pnpm dev
 ```
 
-## Developing
+## Usage
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+1. Click "Import Transactions" to fetch transactions from your Wise account
+2. Use the month filter to view transactions for specific months
+3. Click on any category field to manually edit transaction categories
+4. View spending breakdown by category in the right panel
 
-```sh
-npm run dev
+## Database
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+The app uses SQLite with Drizzle ORM. Database commands:
+
+- `pnpm db:push` - Push schema changes to database
+- `pnpm db:generate` - Generate migration files
+- `pnpm db:studio` - Open Drizzle Studio (database GUI)
 
 ## Building
 
-To create a production version of your app:
+To create a production build:
 
 ```sh
-npm run build
+pnpm build
 ```
 
-You can preview the production build with `npm run preview`.
+Preview the production build:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```sh
+pnpm preview
+```
